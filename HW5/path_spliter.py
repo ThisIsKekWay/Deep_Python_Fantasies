@@ -1,7 +1,10 @@
-path = 'C:\Thecode\Media\статья.txt'
+import os.path
 
+path = 'C:\Thecode\Media\статья.txt'
+print(os.path.split(path))
 #Не разобрался c бэкслэшем, умер.
-#
+#Воскрес. Стоун - лев.
+
 
 def path_spliter (path):
     *_, file = path.split("\\")
