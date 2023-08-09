@@ -45,14 +45,14 @@ class Matrix:
                 res = True
             return res
         else:
-            return 'matrix measurments are unequal! result is unreacheable'
+            return 'matrix measurements are unequal! result is unreachable'
 
     def __mul__ (self, other):
         if self.size_c == other.size_r:
             res = [[sum(a * b for a, b in zip(row_a, col_b)) for col_b in zip(*other.matrix)] for row_a in self.matrix]
             return Matrix(self.size_r, other.size_c, res)
         else:
-            return 'matrix measurments are unequal! result is unreacheable'
+            return 'matrix measurements are unequal! result is unreachable'
 
 
 m = Matrix(1, 2)

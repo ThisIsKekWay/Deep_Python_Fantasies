@@ -46,7 +46,7 @@ del a
 try:
     print(a)
 except Exception:
-    print('CANT FIND a, it has been delited')
+    print('CANT FIND a, it has been erased')
 
 b = Archive('bububub', 3)
 print(b)
@@ -58,7 +58,7 @@ print(c)
 print(repr(c))
 del c
 
-d = Archive('Shampo', 12)
+d = Archive('Shampoo', 12)
 print(d)
 print(repr(d))
 del d
