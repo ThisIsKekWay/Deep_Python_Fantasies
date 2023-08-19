@@ -23,7 +23,7 @@ class SideValueError(Exception):
         self.side = side
 
     def __str__ (self):
-        return f'Сторона треугольника не может быть меньше нуля. Ваше значение: {self.side}'
+        return f'Сторона треугольника не может быть меньше или равна нулю. Ваше значение: {self.side}'
 
 
 class Side:
@@ -33,7 +33,7 @@ class Side:
             int(value)
         except ValueError as e:
             raise SideTypeError(value)
-        if int(value) < 0:
+        if int(value) <= 0:
             raise SideValueError(value)
 
     def __set_name__ (self, owner, name):
@@ -57,19 +57,19 @@ class Triangle:
         self.side_b = side_b
         self.side_c = side_c
 
-    def get_info (self):
-        if self.type != None:
+    def __str__(self):
+        if self.type is not None:
             res = f'Треугольник со сторонами {self.side_a}, {self.side_b}, {self.side_c} {self.exist} ' \
-				  f'и имеет тип: {self.type}'
+                  f'и имеет тип: {self.type}'
         else:
             res = f'Треугольник со сторонами {self.side_a}, {self.side_b}, {self.side_c}  {self.exist}'
         return res
 
     def exist_triangle (self):
         if \
-			self.side_a < self.side_b + self.side_c or \
-			self.side_b < self.side_c + self.side_a or \
-			self.side_c < self.side_b + self.side_a:
+            self.side_a < self.side_b + self.side_c or \
+            self.side_b < self.side_c + self.side_a or \
+            self.side_c < self.side_b + self.side_a:
 
 
             self.exist = 'существует'
@@ -88,15 +88,15 @@ class Triangle:
 
 
 if __name__ == '__main__':
-	while True:
-		print('Enter triangle data')
-		side_a, side_b, side_c = input().split(' ')
-		try:
-			triangle = Triangle(side_a, side_b, side_c)
-			triangle.exist_triangle()
-			print(triangle.get_info())
-			break
-		except SideValueError as e:
-			print(e)
-		except SideTypeError as e:
-			print(e)
+    while True:
+        print('Enter triangle data')
+        side_a, side_b, side_c = input().split(' ')
+        try:
+            triangle = Triangle(side_a, side_b, side_c)
+            triangle.exist_triangle()
+            print(triangle)
+            break
+        except SideValueError as e:
+            print(e)
+        except SideTypeError as e:
+            print(e)
