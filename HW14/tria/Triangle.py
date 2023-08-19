@@ -15,7 +15,8 @@ class SideTypeError(Exception):
         self.side = side
 
     def __str__ (self):
-        return f'Значение длины стороны треугольника должно быть только в числовой форме. Ваше значение: {self.side}'
+        return f'Значение длины стороны треугольника должно быть только в натуральных числах и в числовой форме. ' \
+               f'Ваше значение: {self.side}'
 
 
 class SideValueError(Exception):
@@ -29,9 +30,7 @@ class SideValueError(Exception):
 class Side:
     @classmethod
     def verify_side (cls, value):
-        try:
-            int(value)
-        except ValueError as e:
+        if type(value) != int:
             raise SideTypeError(value)
         if int(value) <= 0:
             raise SideValueError(value)
@@ -56,24 +55,22 @@ class Triangle:
         self.side_a = side_a
         self.side_b = side_b
         self.side_c = side_c
-        self.exist_triangle()
         self.typicality_triangle()
+        self.exist_triangle()
 
-
-    def __str__(self):
+    def __str__ (self):
         if self.type is not None:
             res = f'Треугольник со сторонами {self.side_a}, {self.side_b}, {self.side_c} {self.exist} ' \
                   f'и имеет тип: {self.type}'
         else:
-            res = f'Треугольник со сторонами {self.side_a}, {self.side_b}, {self.side_c}  {self.exist}'
+            res = f'Треугольник со сторонами {self.side_a}, {self.side_b}, {self.side_c} {self.exist}'
         return res
 
     def exist_triangle (self):
         if \
-            self.side_a < self.side_b + self.side_c or \
-            self.side_b < self.side_c + self.side_a or \
-            self.side_c < self.side_b + self.side_a:
-
+                self.side_a < self.side_b + self.side_c and \
+                        self.side_b < self.side_c + self.side_a and \
+                        self.side_c < self.side_b + self.side_a:
 
             self.exist = 'существует'
             self.typicality_triangle()
