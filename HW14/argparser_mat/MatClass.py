@@ -1,5 +1,6 @@
+import argparse
 import random
-from HW14.argparser_tria.all_logger import *
+from all_logger import *
 
 class MatrixElementsError(Exception):
     def __init__ (self, matrix):
@@ -71,9 +72,14 @@ class Matrix:
 
 
 if __name__ == '__main__':
-    lst = [[1, 0], [0, 1, 2]]
+    parser = argparse.ArgumentParser(description='Проверяет возможность существования треугольника')
+    parser.add_argument('rows', metavar='a', type=int, help='Введите число рядов матрицы')
+    parser.add_argument('cols', metavar='b', type=int, help='Введите число столбцов матрицы')
+    parser.add_argument('-list', metavar='c', type=list, help='Введите матрицу, если придумали', default=None)
+    args = parser.parse_args()
+
     try:
-        k = Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, 8, 9, 0]])
+        k = Matrix(args.rows, args.cols, args.list)
         log_info(f'Ваша матрица:\n{k}')
     except MatrixElementsError as e:
         log_warn(e)

@@ -1,5 +1,5 @@
 import pytest
-from Triangle import *
+from HW14.argparser_tria.Triangle import *
 
 
 def test_str_bad ():

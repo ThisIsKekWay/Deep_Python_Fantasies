@@ -1,5 +1,5 @@
 import unittest
-from Triangle import *
+from HW14.argparser_tria.Triangle import *
 
 
 class MyTestCase(unittest.TestCase):

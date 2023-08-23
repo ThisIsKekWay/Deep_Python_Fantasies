@@ -1,0 +1,12 @@
+INFO     - 2023-08-23 20:48:11,888. В модуле "C:\Users\Koha\Desktop\Учеба GB\Deep Python\HW14\mat\MatClass.py"
+в строке 024 функция "log_info()"записала сообщение:
+Ваша матрица:
+1 2 3 
+4 5 6 
+7 8 9 
+
+
+WARNING  - 2023-08-23 20:48:20,460. В модуле "C:\Users\Koha\Desktop\Учеба GB\Deep Python\HW14\mat\MatClass.py"
+в строке 020 функция "log_warn()"записала сообщение:
+martix rows are not equal. your matrix: [[1, 2, 3], [4, 5, 6], [7, 8, 9, 0]]
+

@@ -94,14 +94,27 @@ class Triangle:
 
 
 if __name__ == '__main__':
-    while True:
-        print('Enter triangle data')
-        side_a, side_b, side_c = input().split(' ')
-        try:
-            triangle = Triangle(side_a, side_b, side_c)
-            log_info(triangle)
-            break
-        except SideValueError as e:
-            log_warn(e)
-        except SideTypeError as e:
-            log_warn(e)
+    parser = argparse.ArgumentParser(description='Проверяет возможность существования треугольника')
+    parser.add_argument('a', metavar='a', type=int, help='Введите сторону А треугольника')
+    parser.add_argument('b', metavar='b', type=int, help='Введите сторону B треугольника')
+    parser.add_argument('c', metavar='c', type=int, help='Введите сторону C треугольника')
+    args = parser.parse_args()
+    try:
+        t = Triangle(args.a, args.b, args.c)
+        log_info(t)
+    except SideValueError as e:
+         log_warn(e)
+    except SideTypeError as e:
+         log_warn(e)
+
+    # while True:
+    #     print('Enter triangle data')
+    #     side_a, side_b, side_c = input().split(' ')
+    #     try:
+    #         triangle = Triangle(side_a, side_b, side_c)
+    #         log_info(triangle)
+    #         break
+    #     except SideValueError as e:
+    #         log_warn(e)
+    #     except SideTypeError as e:
+    #         log_warn(e)
